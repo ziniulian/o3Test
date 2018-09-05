@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>访问记录</title>
+		{{#def.meta}}
+	</head>
+
+	<body>
+		<div id="boso" class="boso">
+			<div class="logo">
+				<a href="javascript: dco.clear();">&nbsp;&nbsp;&nbsp;清除</a>
+				<a class="logohome" target="_blank" href="{{=it.tmpo.dms.io_home || ''}}"></a>
+			</div>
+			<form id="qryFmDom" action="{{=it.tmpo.url.base}}/" method="post" target="_self">
+				{{#def.qrypro}}
+				<input id="contDom" type="hidden" name="cont" value="{}"/>
+			</form>
+			{{? it.comDbSrvReturn.length > 0}}
+				<div>
+					<table>
+						<td class="c" width="30%">
+							<a href="javascript: dco.first();">第一页</a>
+						</td>
+						<td class="c" width="35%">
+							{{? it.tmpo.qry.sm === 1}}
+								<a href="javascript: dco.pre('{{=it.comDbSrvReturn[0][it.tmpo.qry.k]}}');">上一页</a>
+							{{?}}
+						</td>
+						<td class="c" width="35%">
+							{{? it.comDbSrvReturn.length > it.tmpo.qry.size}}
+								<a href="javascript: dco.next('{{=it.comDbSrvReturn[it.tmpo.qry.size][it.tmpo.qry.k]}}');">下一页</a>
+							{{?}}
+						</td>
+					</table>
+				</div>
+				<br />
+				<div>
+					<table>
+						<tbody>
+							<tr>
+								<th width="40%">IP</th>
+								<th width="55%">时间</th>
+								<th />
+							</tr>
+						</tbody>
+						<tbody>
+							{{~it.comDbSrvReturn:o:i}}
+								{{? i < it.tmpo.qry.size}}
+									<tr>
+										<td>{{=o.ip}}</td>
+										<td>{{=it.tmpo.tls.utTim.format(it.tmpo.tls.utTim.getDate(o.tim), "datetim")}}</td>
+									</tr>
+								{{?}}
+							{{~}}
+						</tbody>
+					</table>
+				</div>
+				<br />
+				<div>
+					<table>
+						<td class="c" width="30%">
+							<a href="javascript: dco.first();">第一页</a>
+						</td>
+						<td class="c" width="35%">
+							{{? it.tmpo.qry.sm === 1}}
+								<a href="javascript: dco.pre('{{=it.comDbSrvReturn[0][it.tmpo.qry.k]}}');">上一页</a>
+							{{?}}
+						</td>
+						<td class="c" width="35%">
+							{{? it.comDbSrvReturn.length > it.tmpo.qry.size}}
+								<a href="javascript: dco.next('{{=it.comDbSrvReturn[it.tmpo.qry.size][it.tmpo.qry.k]}}');">下一页</a>
+							{{?}}
+						</td>
+					</table>
+				</div>
+			{{?}}
+			<div id="memoDom" class="memo"></div>
+		</div>
+	</body>
+
+	{{#def.qry_js}}
+	<script type="text/javascript">
+		document.body.onload = dco.init;
+	</script>
+</html>
