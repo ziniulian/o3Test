@@ -51,7 +51,7 @@ r.get("/v/qry_vs/", function (req, res, next) {
 	next();
 });
 
-tools.qryRo.init("/v/", "test");
+tools.qryRo.init("/v/");
 
 tools.tmpRo.initTmp("/v/", "tmp", {
 	utJson: LZR.getSingleton(LZR.Base.Json),
