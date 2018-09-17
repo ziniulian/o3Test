@@ -48,6 +48,7 @@ r.getTls = function () {
 r.get("/v/qry_vs/", function (req, res, next) {
 	var o = LZR.fillPro(req, "qpobj.tmpo.qry");
 	o.k = "tim";
+	o.sort = -1;
 	next();
 });
 
